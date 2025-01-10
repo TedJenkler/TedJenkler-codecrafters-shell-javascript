@@ -8,13 +8,9 @@ const rl = readline.createInterface({
 });
 
 rl.question("$ ", (answer) => {
+  const command = answer.split(" ")[0];
+  if (!commands.includes(command)) {
+    console.log(`${command}: command not found`);
+  }
   rl.close();
 });
-
-const main = (rl) => {
-  if (commands.includes(rl.question)) {
-    console.log(`invalid_command: ${rl.question.split(" ")[0]} not found`);
-  }
-};
-
-main();
