@@ -1,6 +1,6 @@
 const readline = require("readline");
 
-const commands = [];
+const commands = ["exit"];
 
 let terminal = true;
 
@@ -14,11 +14,12 @@ const promptUser = () => {
     const command = answer.split(" ")[0];
     if (!commands.includes(command)) {
       console.log(`${command}: command not found`);
+    } else if (command === "exit") {
+      rl.close();
+      process.exit(0);
     }
     if (terminal) {
       promptUser();
-    } else {
-      rl.close();
     }
   });
 };
